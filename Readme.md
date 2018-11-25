@@ -19,6 +19,8 @@ To load a microfront:
 <div id="app"></div>
 ```
 
+Each front-end can communicate with the help of PubSubJs.
+
 ### Variables injection
 
 #### config
