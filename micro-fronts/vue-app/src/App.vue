@@ -18,7 +18,7 @@
       <li>Timestamp: {{ fromReact.timestamp }}</li>
     </ul>
 
-    <div>
+    <div v-if="features.show_user_infos">
       <h5>Current User</h5>
       <ul>
         <li>Name: {{ config.user.name }}</li>

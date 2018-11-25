@@ -42,9 +42,22 @@ class App extends Component {
 
   render() {
     let button
+    let userInfos
 
     if (this.state.features.react_msg_btn) {
       button = <button onClick={this.talkToVuejs} className="btn btn-primary">SAY HI TO VUEJS</button>
+    }
+
+    if (this.state.features.show_user_infos) {
+      userInfos = (
+        <div>
+          <h5>Current User</h5>
+          <ul>
+            <li>Name: { this.state.config.user.name }</li>
+            <li>Email: { this.state.config.user.email }</li>
+          </ul>
+        </div>
+      )
     }
 
     return (
@@ -61,13 +74,7 @@ class App extends Component {
           <li>Timestamp: { this.state.timestamp }</li>
         </ul>
 
-        <div>
-          <h5>Current User</h5>
-          <ul>
-            <li>Name: { this.state.config.user.name }</li>
-            <li>Email: { this.state.config.user.email }</li>
-          </ul>
-        </div>
+        {userInfos}
       </div>
     );
   }
