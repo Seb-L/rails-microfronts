@@ -1,24 +1,17 @@
 version: '3'
 services:
-  db:
-    image: postgres
-    volumes:
-      - ./tmp/db:/var/lib/postgresql/data
   railsapp:
-    build: ./rails-app
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    build: ./rails-app/
+    command: sh -c "cd ./rails-app && rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/myapp
     ports:
       - "3000:3000"
-    depends_on:
-      - db
-  reactapp:
-    build: ./micro-fronts/react-app
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+
+  assetsserver:
+    build: ./micro-fronts/
+    command: sh -c "http-server ./micro-fronts --cors"
     volumes:
-      - .:/myapp
+      - .:/assets
     ports:
-      - "3000:3000"
-    depends_on:
-      - db
+      - "8080:8080"

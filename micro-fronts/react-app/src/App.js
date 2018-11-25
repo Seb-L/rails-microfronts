@@ -12,7 +12,8 @@ class App extends Component {
         .reduce((featuresObj, feature) => {
           featuresObj[feature.id] = feature.activated
           return featuresObj
-        }, {})
+        }, {}),
+      config: window.gon.config
     }
   }
 
@@ -59,6 +60,14 @@ class App extends Component {
           <li>Msg: { this.state.msg }</li>
           <li>Timestamp: { this.state.timestamp }</li>
         </ul>
+
+        <div>
+          <h5>Current User</h5>
+          <ul>
+            <li>Name: { this.state.config.user.name }</li>
+            <li>Email: { this.state.config.user.email }</li>
+          </ul>
+        </div>
       </div>
     );
   }

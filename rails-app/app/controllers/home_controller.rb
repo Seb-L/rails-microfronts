@@ -4,7 +4,10 @@ class HomeController < ApplicationController
     puts @features
 
     gon.push({
-      :features => @features
+      :features => Features.all,
+      :config => {
+        :user => Users.find(1)
+      }
     })
   end
 end

@@ -17,11 +17,11 @@ module ApplicationHelper
     @manifest_content.keys().each do |key|
       if key.match(/\.js$/)
         content_for(:manifest_js) do
-          javascript_include_tag(@assets_path + @manifest_content[key])
+          javascript_include_tag(@assets_path.gsub('assetsserver', 'localhost') + @manifest_content[key])
         end
       elsif key.match(/\.css$/)
         content_for(:manifest_css) do
-          stylesheet_link_tag(@assets_path + @manifest_content[key])
+          stylesheet_link_tag(@assets_path.gsub('assetsserver', 'localhost') + @manifest_content[key])
         end
       end
     end

@@ -17,6 +17,14 @@
       <li>Msg: {{ fromReact.msg }}</li>
       <li>Timestamp: {{ fromReact.timestamp }}</li>
     </ul>
+
+    <div>
+      <h5>Current User</h5>
+      <ul>
+        <li>Name: {{ config.user.name }}</li>
+        <li>Email: {{ config.user.email }}</li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -25,7 +33,6 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'app',
-  props: ['features'],
   data () {
     return {
       fromReact: {
@@ -34,7 +41,7 @@ export default {
       }
     }
   },
-  computed: mapGetters(['features']),
+  computed: mapGetters(['features', 'config']),
   methods: {
     sayHi () {
       console.log('VUEJS: TO REACT')
@@ -47,6 +54,7 @@ export default {
   created () {
     console.log('VUEJS: SUBSCRIBE')
     console.log(this.features)
+    console.log(this.config)
 
     window.PubSub.subscribe('HI_FROM_REACT', (topic, data) => {
       console.log('VUEJS: FROM REACT')

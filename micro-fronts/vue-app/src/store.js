@@ -9,7 +9,8 @@ export default new Vuex.Store({
       .reduce((featuresObj, feature) => {
         featuresObj[feature.id] = feature.activated
         return featuresObj
-      }, {})
+      }, {}),
+    config: window.gon.config
   },
   mutations: {
 
@@ -18,6 +19,7 @@ export default new Vuex.Store({
 
   },
   getters: {
-    features: state => state.features
+    features: state => state.features,
+    config: state => state.config
   }
 })

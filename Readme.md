@@ -2,22 +2,31 @@
 
 ## Install and start
 
-### Rails App
+1. Install docker
+2. Run `docker-compose up`
+3. Go to: http://localhost:3000/home/index
 
-```cd rails-app```
+## Features
 
-```bundle install```
+### Mutliple front-end injection
 
-```rails s```
+With the help of a rails helper using assets manifest.json.
 
-### Micro front Assets server
+To load a microfront:
 
-```npm i -g http-server```
+```rails
+<%= load_manifest_resources("http://assetsserver:8080/vue-app/dist/manifest.json") %>
+<div id="app"></div>
+```
 
-```cd micro-fronts```
+### Variables injection
 
-```http-server --cors```
+#### config
 
-### See results
+To pass data from the rails controller/database to each front-end.
 
-Go to: http://localhost:3000/home/index
+#### features
+
+Data from the 'features' database table.
+
+Used to activate/disactivate features in the front-end without touching anything in rails (kind of feature flags).
