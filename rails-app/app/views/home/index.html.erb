@@ -1,0 +1,10 @@
+<h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+
+<%= load_manifest_resources("http://127.0.0.1:8080/vue-app/dist/manifest.json") %>
+<div id="app"></div>
+
+<%= load_manifest_resources("http://127.0.0.1:8080/react-app/build/asset-manifest.json") %>
+<div id="root"></div>
+
+<%= yield :manifest_js %>
