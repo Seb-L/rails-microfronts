@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <h1>VueJs App!</h1>
-    <button @click="sayHi">SAY HI TO REACT</button>
+    <button
+      v-if="features.vuejs_msg_btn"
+      @click="sayHi"
+    >
+      SAY HI TO REACT
+    </button>
 
     <br>
     <h2>From React</h2>
@@ -14,10 +19,11 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'app',
+  props: ['features'],
   data () {
     return {
       fromReact: {
@@ -26,6 +32,7 @@ export default {
       }
     }
   },
+  computed: mapGetters(['features']),
   methods: {
     sayHi () {
       console.log('VUEJS: TO REACT')
@@ -37,6 +44,7 @@ export default {
   },
   created () {
     console.log('VUEJS: SUBSCRIBE')
+    console.log(this.features)
 
     window.PubSub.subscribe('HI_FROM_REACT', (topic, data) => {
       console.log('VUEJS: FROM REACT')

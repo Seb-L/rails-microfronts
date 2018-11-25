@@ -10,6 +10,8 @@
     <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/pubsub-js/1.7.0/pubsub.min.js' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <%= Gon::Base.render_data %>
+
     <%= yield :manifest_css %>
   </head>
 

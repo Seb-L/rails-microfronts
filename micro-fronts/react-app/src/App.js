@@ -7,7 +7,12 @@ class App extends Component {
 
     this.state = {
       msg: null,
-      timestamp: null
+      timestamp: null,
+      features: window.gon.features
+        .reduce((featuresObj, feature) => {
+          featuresObj[feature.id] = feature.activated
+          return featuresObj
+        }, {})
     }
   }
 
@@ -35,10 +40,17 @@ class App extends Component {
   }
 
   render() {
+    let button
+
+    if (this.state.features.react_msg_btn) {
+      button = <button onClick={this.talkToVuejs}>SAY HI TO VUEJS</button>
+    }
+
     return (
       <div className="App">
         <h1>React App</h1>
-        <button onClick={this.talkToVuejs}>SAY HI TO VUEJS</button>
+
+        {button}
 
         <h2>From VueJs</h2>
         <ul>

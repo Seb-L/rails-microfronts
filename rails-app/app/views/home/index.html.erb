@@ -8,3 +8,22 @@
 <div id="root"></div>
 
 <%= yield :manifest_js %>
+
+<%= @features.to_json() %>
+
+<br>
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Id</td>
+    <td>Activated</td>
+  </tr>
+
+<% @features.each do |feature| %>
+  <tr>
+    <td><%= feature.name %></td>
+    <td><%= feature.id %></td>
+    <td><%= feature.activated %></td>
+  </tr>
+<% end %>
+</table>
