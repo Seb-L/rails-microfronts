@@ -43,7 +43,7 @@ class App extends Component {
     let button
 
     if (this.state.features.react_msg_btn) {
-      button = <button onClick={this.talkToVuejs}>SAY HI TO VUEJS</button>
+      button = <button onClick={this.talkToVuejs} className="btn btn-primary">SAY HI TO VUEJS</button>
     }
 
     return (
@@ -52,7 +52,9 @@ class App extends Component {
 
         {button}
 
-        <h2>From VueJs</h2>
+        <br/><br/>
+
+        <h4>From VueJs</h4>
         <ul>
           <li>Msg: { this.state.msg }</li>
           <li>Timestamp: { this.state.timestamp }</li>

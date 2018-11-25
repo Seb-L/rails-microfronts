@@ -1,29 +1,47 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="container">
+  <h1>Micro Front-end Demo</h1>
+  <p>Find me in app/views/home/index.html.erb</p>
+  <br><br>
 
-<%= load_manifest_resources("http://127.0.0.1:8080/vue-app/dist/manifest.json") %>
-<div id="app"></div>
+  <div class="card-deck">
+    <div class="card bg-dark text-light">
+      <div class="card-body">
+        <%= load_manifest_resources("http://127.0.0.1:8080/vue-app/dist/manifest.json") %>
+        <div id="app"></div>
+      </div>
+    </div>
 
-<%= load_manifest_resources("http://127.0.0.1:8080/react-app/build/asset-manifest.json") %>
-<div id="root"></div>
+    <div class="card">
+      <div class="card-body">
+        <%= load_manifest_resources("http://127.0.0.1:8080/react-app/build/asset-manifest.json") %>
+        <div id="root"></div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+
+  <h2>Features</h2>
+
+  <table class="table table-striped table-dark">
+    <thead class="thead-dark">
+      <tr>
+        <td>Name</td>
+        <td>Id</td>
+        <td>Activated</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @features.each do |feature| %>
+        <tr>
+          <td><%= feature.name %></td>
+          <td><%= feature.id %></td>
+          <td><%= feature.activated %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
 
 <%= yield :manifest_js %>
-
-<%= @features.to_json() %>
-
-<br>
-<table>
-  <tr>
-    <td>Name</td>
-    <td>Id</td>
-    <td>Activated</td>
-  </tr>
-
-<% @features.each do |feature| %>
-  <tr>
-    <td><%= feature.name %></td>
-    <td><%= feature.id %></td>
-    <td><%= feature.activated %></td>
-  </tr>
-<% end %>
-</table>

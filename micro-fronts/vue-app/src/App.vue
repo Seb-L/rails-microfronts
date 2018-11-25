@@ -4,12 +4,14 @@
     <button
       v-if="features.vuejs_msg_btn"
       @click="sayHi"
+      class="btn btn-primary"
     >
       SAY HI TO REACT
     </button>
 
-    <br>
-    <h2>From React</h2>
+    <br><br>
+
+    <h4>From React</h4>
 
     <ul>
       <li>Msg: {{ fromReact.msg }}</li>
@@ -56,15 +58,9 @@ export default {
 
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  width: 300px;
-  height: 300px;
-  background-color: #efefef;
-  float: left;
 
   ul{
     text-align: left;
